@@ -18,6 +18,20 @@ python physics_studio.py video topics/example_motion.json -o motion.mp4
 
 That is the whole pipeline. The example topic produces a complete lesson.
 
+## Dashboard (web UI)
+
+Don't want to hand-edit JSON? Run the built-in dashboard:
+
+```bash
+python webui.py            # then open http://localhost:8000
+```
+
+Fill the form (title, voice, hook, cards, optional photos), click
+**Build video**, and the finished MP4 appears with a download link and
+inline preview. No extra dependencies: Python stdlib only. Builds run in
+the background and land in `out/`, with the generated topic JSON kept in
+`topics/web_<id>.json` for reference.
+
 ## Topic file format
 
 ```json
@@ -47,6 +61,9 @@ That is the whole pipeline. The example topic produces a complete lesson.
 - Optional hook clip: drop any 9:16 (or wider) clip next to the topic file
   and point `hook_video` at it. It is narrated over, scaled to 1080x1920 and
   held on its last frame if the narration runs longer than the clip.
+- Optional `photo` on any card: a real-life photo band (path relative to the
+  repo, e.g. `photos/track.jpg`). Real-life things while explaining is the
+  channel's differentiator.
 
 ## Voices
 
